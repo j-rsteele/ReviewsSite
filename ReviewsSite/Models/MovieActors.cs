@@ -7,7 +7,7 @@ namespace ReviewsSite.Models
 {
     public class MovieActors
     {
-        public int Id;
+        public int Id { get; set; }
         public int ActorId { get; set; }
         public int MovieId { get; set; }
 

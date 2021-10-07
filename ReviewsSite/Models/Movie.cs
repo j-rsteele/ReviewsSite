@@ -13,14 +13,11 @@ namespace ReviewsSite.Models
 		public string Genre { get; set; }
 		public int ReleaseYear { get; set; }
 		public string Award { get; set; }
-		public virtual List<Actor> Actors { get; set; }
+		public virtual List<MovieActors> Actors { get; set; }
+	
+		public virtual List<Review> Reviews { get; set; }
 	}
 
-	public class Actor
-	{
-		public int Id { get; set; }
-		public string Name { get; set; }
-		public int MovieId { get; set; }
-	}
-
+	
 }
+ 

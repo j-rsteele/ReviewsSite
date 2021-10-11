@@ -48,7 +48,8 @@ namespace ReviewsSite.Controllers
         // GET: Review/Create
         public IActionResult Create()
         {
-            ViewData["MovieId"] = new SelectList(_context.Movies, "Id", "Id");
+           
+            ViewData["Movies"] = _context.Movies;
             return View();
         }
 
@@ -65,7 +66,7 @@ namespace ReviewsSite.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MovieId"] = new SelectList(_context.Movies, "Id", "Id", review.MovieId);
+            ViewData["Movies"] = _context.Movies;
             return View(review);
         }
 

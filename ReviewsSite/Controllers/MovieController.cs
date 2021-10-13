@@ -145,7 +145,7 @@ namespace ReviewsSite.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MovieExists(int id)
+       public bool MovieExists(int id)
         {
             return _context.Movies.Any(e => e.Id == id);
         }

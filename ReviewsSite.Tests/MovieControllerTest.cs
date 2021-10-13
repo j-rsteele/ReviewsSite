@@ -21,6 +21,7 @@ namespace ReviewsSite.Tests
         {
             movieContext = Substitute.For<Moviecontext>();
             sut = new MovieController(movieContext);
+     
         }
 
         [Fact]
@@ -32,12 +33,47 @@ namespace ReviewsSite.Tests
             var result = sut.Index();
 
             // Assert
-            Assert.IsType<ViewResult>(result);
+            Assert.IsType<Task<IActionResult>>(result);
         }
+
+        
+        
+        [Fact]
+        public void Confirm_Create_Movie_Successfully()
+        {
+            // Arrange
+            var movie = new Movie();
+        
+            movie.Title = "titanic";
+
+            var result = sut.Create(movie);
+
+            // Act
+            //  sut.Delete(movie.Id);
+
+            // Assert
+            Assert.IsType<Task<IActionResult>>(result);
+            
+
+        }
+
+
+
+
     }
 }
 
-/*public class CourseControllerTests
+/*
+ * 
+ *   private bool MovieExists(int id)
+        {
+            return _context.Movies.Any(e => e.Id == id);
+        }
+ * 
+ * 
+ * 
+ * 
+ * public class CourseControllerTests
 {
     CourseController sut;
     IRepository<Course> courseRepo;

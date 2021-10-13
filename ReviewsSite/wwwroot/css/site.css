@@ -1,5 +1,16 @@
 ﻿body {
+    text-decoration: none;
 }
 .pad1 {
     padding: 2em;
+}
+
+a {
+    text-decoration: none;
+    padding: 1em;
+}
+
+
+h1 {
+    padding-bottom: 1em;
 }

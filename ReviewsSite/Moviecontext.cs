@@ -8,7 +8,7 @@ namespace ReviewsSite
 		public DbSet<Movie> Movies { get; set; }
 		public DbSet<Actor> Actors { get; set; }
 		public DbSet<Review> Reviews { get; set; }
-		public DbSet<MovieActors> MovieActorsS { get; set; }
+		public DbSet<MovieActors> MovieActors { get; set; }
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
@@ -57,7 +57,6 @@ namespace ReviewsSite
 		);
 
 			modelbuilder.Entity<Review>().HasData(
-
 						new Review() { Id = 1, Comment = "pretty good", MovieId = 1, Name = "John Doe" },
 						new Review() { Id = 2, Comment = "really bad", MovieId = 2, Name = "Jane Doe" },
 						new Review() { Id = 3, Comment = "scary", MovieId = 3, Name = "Scott" },

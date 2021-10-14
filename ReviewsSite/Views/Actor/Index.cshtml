@@ -1,23 +1,22 @@
-﻿@model IEnumerable<ReviewsSite.Models.Review>
+﻿@model IEnumerable<ReviewsSite.Models.Actor>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Reviews List</h1>
+<h1>Index</h1>
 
-
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Comment)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Movie)
+                Movies
             </th>
             <th></th>
         </tr>
@@ -26,13 +25,15 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Comment)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Movie.Title)
+                <ul>
+                    @foreach (var am in item.Movies)
+                    {
+                        <li>@am.Movie.Title</li>
+                    }
+                </ul>
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
@@ -43,7 +44,3 @@
 }
     </tbody>
 </table>
-
-<p>
-    <a asp-action="Create" class="text-center">> > Click Here to Add a Review < <</a>
-</p>

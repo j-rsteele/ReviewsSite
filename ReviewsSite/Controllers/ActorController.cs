@@ -1,121 +1,153 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using ReviewsSite.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using ReviewsSite;
+using ReviewsSite.Models;
 
 namespace ReviewsSite.Controllers
 {
-	public class ActorController : Controller
-	{
-		private Moviecontext _db;
+    public class ActorController : Controller
+    {
+        private readonly Moviecontext _context;
 
-		public ActorController (Moviecontext db)
-		{
-			this._db = db;
-		}
+        public ActorController(Moviecontext context)
+        {
+            _context = context;
+        }
 
-		// GET: ActorController1
-		public ActionResult Index()
-		{
-			return View(_db.Actors.ToList());
-		}
+        // GET: Actor
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Actors.ToListAsync());
+        }
 
-		// GET: ActorController/Details/5
-		public ActionResult Details(int id)
-		{
-			return View();
-		}
+        // GET: Actor/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-		// GET: ActorController1/Create
-		public ActionResult Create()
-		{
-			return View();
-		}
+            var actor = await _context.Actors
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (actor == null)
+            {
+                return NotFound();
+            }
 
-		public IActionResult AddActorToMovie(int id)
-		{
-			ViewBag.Movie = _db.Movies.ToList();
-			ViewBag.Actor = _db.Actors.Find(id);
+            return View(actor);
+        }
 
-			return View();
-		}
+        // GET: Actor/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
 
-		[HttpPost]
-		public IActionResult AddMovieToActor(int ActorId, Movie model)
-		{
-			ViewBag.Movies = _db.Movies.ToList();
-			ViewBag.Actor = _db.Actors.Find(ActorId);
+        // POST: Actor/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,Name,MovieId")] Actor actor)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(actor);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(actor);
+        }
 
-			var actor = _db.Actors.Find(ActorId);
+        // GET: Actor/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-			if (actor.Movies.Where(c => c.MovieId == model.Id).FirstOrDefault() == null)
-			{
-				_db.MovieActors.Add(new MovieActors() { ActorId = ActorId, MovieId = model.Id });
-				_db.SaveChanges();
-			}
+            var actor = await _context.Actors.FindAsync(id);
+            if (actor == null)
+            {
+                return NotFound();
+            }
+            return View(actor);
+        }
 
-			return RedirectToAction("AddMovieToActor");
-		}
+        // POST: Actor/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,MovieId")] Actor actor)
+        {
+            if (id != actor.Id)
+            {
+                return NotFound();
+            }
 
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(actor);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ActorExists(actor.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(actor);
+        }
 
-		// POST: ActorController1/Create
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Create(IFormCollection collection)
-		{
-			try
-			{
-				return RedirectToAction(nameof(Index));
-			}
-			catch
-			{
-				return View();
-			}
-		}
+        // GET: Actor/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-		// GET: ActorController1/Edit/5
-		public ActionResult Edit(int id)
-		{
-			return View();
-		}
+            var actor = await _context.Actors
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (actor == null)
+            {
+                return NotFound();
+            }
 
-		// POST: ActorController1/Edit/5
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Edit(int id, IFormCollection collection)
-		{
-			try
-			{
-				return RedirectToAction(nameof(Index));
-			}
-			catch
-			{
-				return View();
-			}
-		}
+            return View(actor);
+        }
 
-		// GET: ActorController1/Delete/5
-		public ActionResult Delete(int id)
-		{
-			return View();
-		}
+        // POST: Actor/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var actor = await _context.Actors.FindAsync(id);
+            _context.Actors.Remove(actor);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
 
-		// POST: ActorController1/Delete/5
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Delete(int id, IFormCollection collection)
-		{
-			try
-			{
-				return RedirectToAction(nameof(Index));
-			}
-			catch
-			{
-				return View();
-			}
-		}
-	}
+        private bool ActorExists(int id)
+        {
+            return _context.Actors.Any(e => e.Id == id);
+        }
+    }
 }

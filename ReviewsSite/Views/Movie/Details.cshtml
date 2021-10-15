@@ -1,5 +1,7 @@
 ﻿@model ReviewsSite.Models.Movie
 
+
+
 @{
     ViewData["Title"] = "Details";
 }
@@ -10,40 +12,75 @@
     <h4>Movie</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm">
             @Html.DisplayNameFor(model => model.Title)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm">
             @Html.DisplayFor(model => model.Title)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm">
             @Html.DisplayNameFor(model => model.Rating)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm">
             @Html.DisplayFor(model => model.Rating)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm">
             @Html.DisplayNameFor(model => model.Genre)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm">
             @Html.DisplayFor(model => model.Genre)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm">
             @Html.DisplayNameFor(model => model.ReleaseYear)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm">
             @Html.DisplayFor(model => model.ReleaseYear)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm">
             @Html.DisplayNameFor(model => model.Award)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm">
             @Html.DisplayFor(model => model.Award)
         </dd>
+
+
+
+        <dd>
+            <h4> Actors List</h4>
+
+            <ul>
+                @foreach (var actor in Model.Actors)
+                {
+                    <li>@actor.Actor.Name</li>
+                }
+            </ul>
+        </dd>
+
+
+        <dd>
+            <h4> Reviews List</h4>
+
+            <ul>
+                @foreach (var review in Model.Reviews)
+                {
+                    <li>
+                        <div>@review.Comment</div>
+                        <br>
+                        <div>@review.Name</div>
+                        <br><br>
+                    </li>
+                }
+            </ul>
+        </dd>
+
+
+
+
+
     </dl>
-</div>
-<div>
-  
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    </div>
+    <div>
+
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>

@@ -32,9 +32,13 @@ namespace ReviewsSite.Controllers
             {
                 return NotFound();
             }
+           // var actors= await _context.Actors.Attach(movie)
 
             var movie = await _context.Movies
                 .FirstOrDefaultAsync(m => m.Id == id);
+           
+
+
             if (movie == null)
             {
                 return NotFound();
@@ -43,6 +47,16 @@ namespace ReviewsSite.Controllers
             return View(movie);
         }
 
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
         // GET: Movie/Create
         public IActionResult Create()
         {

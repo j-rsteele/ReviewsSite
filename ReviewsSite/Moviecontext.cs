@@ -32,14 +32,14 @@ namespace ReviewsSite
 
 			modelbuilder.Entity<Actor>().HasData(
 
-			  new Actor() { Id = 1, Name = "Actor1", MovieId = 0 },
+			  new Actor() { Id = 1, Name = "Actor1" },
 
-			  new Actor() { Id = 2, Name = "Actor2", MovieId = 0 },
-			  new Actor() { Id = 3, Name = "Actor3", MovieId = 0 },
+			  new Actor() { Id = 2, Name = "Actor2" },
+			  new Actor() { Id = 3, Name = "Actor3" },
 
-			  new Actor() { Id = 4, Name = "Actor4", MovieId = 0 },
+			  new Actor() { Id = 4, Name = "Actor4" },
 
-			  new Actor() { Id = 5, Name = "Actor5", MovieId = 0 }
+			  new Actor() { Id = 5, Name = "Actor5" }
 	   );
 
 			modelbuilder.Entity<MovieActors>().HasData(

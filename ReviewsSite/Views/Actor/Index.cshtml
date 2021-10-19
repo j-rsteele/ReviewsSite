@@ -32,7 +32,14 @@
                     <ul>
                         @foreach (var am in item.Movies)
                         {
-                            <li>@am.Movie.Title</li>
+                        <li>
+
+                            <span class="p-2"><a asp-action="Details" asp-controller="Movie"  asp-route-id="@am.Movie.Id"  rel="noopener noreferrer" class="text-decoration-none">@am.Movie.Title</a></span>
+
+                           
+
+
+                        </li>
                         }
                     </ul>
                 </td>

@@ -32,20 +32,20 @@
                     <ul>
                         @foreach (var am in item.Movies)
                         {
-                        <li>
+                            <li>
 
-                            <span class="p-2"><a asp-action="Details" asp-controller="Movie"  asp-route-id="@am.Movie.Id"  rel="noopener noreferrer" class="text-decoration-none">@am.Movie.Title</a></span>
-
-                           
+                                <span class="p-2"><a asp-action="Details" asp-controller="Movie" asp-route-id="@am.Movie.Id" rel="noopener noreferrer" class="text-decoration-none">@am.Movie.Title</a></span>
 
 
-                        </li>
+
+
+                            </li>
                         }
                     </ul>
                 </td>
                 <td>
                     @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>

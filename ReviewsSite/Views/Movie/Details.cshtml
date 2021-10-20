@@ -6,18 +6,13 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>  @Html.DisplayFor(model => model.Title)</h1>
 
 <div>
     <h4>Movie</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class="col-sm">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+       
         <dt class="col-sm">
             @Html.DisplayNameFor(model => model.Rating)
         </dt>
@@ -46,7 +41,7 @@
 
 
         <dd>
-            <h4> Actors List</h4>
+            <h3> Actors List</h3>
 
             <ul>
                 @foreach (var actor in Model.Actors)
@@ -79,8 +74,9 @@
 
     </dl>
     </div>
-    <div>
-
-        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-        <a asp-action="Index">Back to List</a>
-    </div>
+<div>
+    
+    
+     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,9 +1,8 @@
-
 ﻿@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
 body {
     text-decoration: none;
-    background: #fff7e6;
+    background-color: #fff7e6;
 }
 
 .pad1 {
@@ -49,7 +48,7 @@ th, td {
 
 @charset "UTF-8";
 
-body {
+.effect {
    
     color:aquamarine;
     text-decoration: none;
@@ -61,8 +60,7 @@ body {
     backface-visibility: hidden;
     animation: slideBG 8s linear infinite 0s;
     animation-timing-function: ease-in-out;
-    /* background-color: rgba(50, 50, 50, 0.6); */
-    background-image: url('../img/p1.jpg')
+    background-image: url('../img/p01.jpg')
 }
 
 @keyframes slideBG {

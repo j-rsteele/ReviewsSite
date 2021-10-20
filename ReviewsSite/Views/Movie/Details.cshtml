@@ -6,13 +6,11 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>  @Html.DisplayFor(model => model.Title)</h1>
-
 <div>
-    <h4>Movie</h4>
+    <h4>@Html.DisplayFor(model => model.Title)</h4>
     <hr />
     <dl class="row">
-       
+
         <dt class="col-sm">
             @Html.DisplayNameFor(model => model.Rating)
         </dt>
@@ -40,32 +38,36 @@
 
 
 
-        <dd>
-            <h3> Actors List</h3>
 
-            <ul>
+        <dd class="mt-3">
+            <h4> Actors List</h4>
+            <hr />
+            <dl class="d-flex">
+
                 @foreach (var actor in Model.Actors)
                 {
-                    <li>@actor.Actor.Name</li>
+                    <dt class="px-5">@actor.Actor.Name</dt>
                 }
-            </ul>
+            </dl>
         </dd>
 
 
         <dd>
             <h4> Reviews List</h4>
-
-            <ul>
+            <hr />
+            <ul class="nostyle">
                 @foreach (var review in Model.Reviews)
                 {
-                    <li>
-                        <div>@review.Comment</div>
-                        <br>
-                        <div>@review.Name</div>
-                        <br><br>
-                    </li>
+                <li>
+                    <div>@review.Comment</div>
+                    <br>
+                    <div>@review.Name</div>
+                    <br><br>
+                    <hr />
+                </li>
                 }
             </ul>
+            
         </dd>
 
 

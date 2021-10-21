@@ -58,16 +58,16 @@
             <ul class="nostyle">
                 @foreach (var review in Model.Reviews)
                 {
-                <li>
-                    <div>@review.Comment</div>
-                    <br>
-                    <div>@review.Name</div>
-                    <br><br>
-                    <hr />
-                </li>
+                    <li>
+                        <div>@review.Comment</div>
+                        <br>
+                        <div>@review.Name</div>
+                        <br><br>
+                        <hr />
+                    </li>
                 }
             </ul>
-            
+
         </dd>
 
 
@@ -75,7 +75,12 @@
 
 
     </dl>
-    </div>
+
+    <span class="p-2"><a asp-action="Create" asp-controller="Review" asp-route-id="@Model.Id" rel="noopener noreferrer" class="text-decoration-none">@Model.Title  ADD review</a></span>
+    <br /><br />
+
+</div>
+
 <div>
     
     

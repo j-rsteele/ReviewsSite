@@ -26,7 +26,7 @@ namespace ReviewsSite
 
 			  new Movie() { Id = 2, Title = "House of Frankenstein", Rating = "NR", Award = "none", Genre = "Horror", ReleaseYear = 1944 },
 
-			new Movie() { Id = 3, Title = "The Mummy's Ghost", Rating = "NR", Award = "Saturn", Genre = "Horror", ReleaseYear = 2012 }
+			new Movie() { Id = 3, Title = "The Mummy's Ghost", Rating = "NR", Award = "Saturn", Genre = "Horror", ReleaseYear = 1940 }
 			 );
 
 

@@ -12,7 +12,13 @@ body {
 a {
     text-decoration: none;
     padding: 1em;
-    color: #808080;
+  /* color: #4d4d4d;*/
+  color: darkblue;
+   font-weight: bold;
+}
+
+.white {
+    color: white !important;
 }
 
     a:hover {

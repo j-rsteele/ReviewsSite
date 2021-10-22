@@ -47,16 +47,7 @@ namespace ReviewsSite.Controllers
             return View(movie);
         }
 
-       
-        
-        
-        
-        
-        
-        
-        
-        
-        
+     
         // GET: Movie/Create
         public IActionResult Create()
         {

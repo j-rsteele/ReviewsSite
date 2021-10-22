@@ -12,7 +12,12 @@ body {
 a {
     text-decoration: none;
     padding: 1em;
-    color: #808080;
+  color: darkblue;
+   font-weight: bold;
+}
+
+.white {
+    color: white !important;
 }
 
     a:hover {
@@ -31,7 +36,7 @@ h1, h2 {
     background-color: orange;
     margin-bottom: 1em;
     padding: 2em;
-    background-image: url("images/header.jpg");
+    background-image: url("../img/header.jpg");
     color: white;
 }
 

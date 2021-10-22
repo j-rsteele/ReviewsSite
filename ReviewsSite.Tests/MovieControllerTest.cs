@@ -63,53 +63,5 @@ namespace ReviewsSite.Tests
     }
 }
 
-/*
- * 
- *   private bool MovieExists(int id)
-        {
-            return _context.Movies.Any(e => e.Id == id);
-        }
- * 
- * 
- * 
- * 
- * public class CourseControllerTests
-{
-    CourseController sut;
-    IRepository<Course> courseRepo;
-
-    public CourseControllerTests()
-    {
-        courseRepo = Substitute.For<IRepository<Course>>();
-        sut = new CourseController(courseRepo);
-    }
-
-    [Fact]
-    public void Index_Returns_A_View()
-    {
-        // Arrange
-
-        // Act
-        var result = sut.Index();
-
-        // Assert
-        Assert.IsType<ViewResult>(result);
-    }
-
-    [Fact]
-    public void Delete_Displays_Course_To_Delete_Successfully()
-    {
-        // Arrange
-        var course = new Course(1, "Test Course");
-
-        // Act
-        var result = sut.DeleteCourse(course.Id);
-
-        // Assert
-        //Assert.Equal(course, result.Model);
-        Assert.IsType<RedirectToActionResult>(result);
-
-    }
-}*/
 
 

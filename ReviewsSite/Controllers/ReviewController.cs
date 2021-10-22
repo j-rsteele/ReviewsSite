@@ -46,11 +46,11 @@ namespace ReviewsSite.Controllers
         }
 
         // GET: Review/Create
-        public IActionResult Create()
+        public IActionResult Create(int Id)
         {
            
             ViewData["Movies"] = _context.Movies;
-            return View();
+            return View(new Review() {Id=0, MovieId = Id });
         }
 
         // POST: Review/Create
